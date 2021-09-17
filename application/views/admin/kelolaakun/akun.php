@@ -21,6 +21,7 @@
                                     <li class="breadcrumb-item active" aria-current="page">Kelola Akun</li>
                                 </ol>
                             </nav>
+                            <?= $this->session->flashdata('pesan'); ?>
                         </div>
                     </div>
                     <!-- Card stats -->

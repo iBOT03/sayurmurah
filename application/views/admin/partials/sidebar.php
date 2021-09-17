@@ -50,8 +50,7 @@
                     <ul class="navbar-nav mb-md-3">
                         <li class="nav-item">
                             <a class="nav-link"
-                                href="https://demos.creative-tim.com/argon-dashboard/docs/getting-started/overview.html"
-                                target="_blank">
+                                href="<?= base_url('admin/pasar') ?>" >
                                 <i class="ni ni-shop text-purple"></i>
                                 <span class="nav-link-text">Data Pasar</span>
                             </a>

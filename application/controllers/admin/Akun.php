@@ -76,6 +76,20 @@ class Akun extends CI_Controller
     {
         $data['profil'] = $this->db->get_where('admin', ['email' => $this->session->userdata('email')])->row_array();
         $data['admin']  = $this->Akun_Model->detail($id);
+        // $data['admin']  = $this->Akun_Model->getAdmin($id);
+
+        if (isset($_POST['aktif']))
+        {
+            $this->Akun_Model->setAktif($id);
+            $this->session->set_flashdata('pesan', '<div class="alert alert-success" role="alert">
+                    <strong>Berhasil memperbaharui data!</strong> Akun telah diaktifkan! </div>');
+                    redirect('admin/akun');
+        } elseif (isset($_POST['mati'])) {
+            $this->Akun_Model->setMati($id);
+            $this->session->set_flashdata('pesan', '<div class="alert alert-danger" role="alert">
+                    <strong>Berhasil memperbaharui data!</strong> Akun telah dinon-aktifkan! </div>');
+                    redirect('admin/akun');
+        }
         $this->load->view('admin/kelolaakun/detailakun', $data);
     }
 }

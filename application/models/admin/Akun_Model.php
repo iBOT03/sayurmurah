@@ -33,7 +33,7 @@ class Akun_Model extends CI_Model
         $this->db->update('admin', ['status' => '2']);
     }
 
-    // GET DATA BAGIAN admin
+    // GET DATA BAGIAN ADMIN
     public function getBagian()
     {
         return $this->db->get("bagian_karyawan")->result();
