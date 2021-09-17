@@ -6,7 +6,7 @@
     <!-- Main content -->
     <div class="main-content" id="panel">
         <!-- Topnav -->
-        <?php $this->load->view('admin/partials/navbar'); ?>
+        <?php $this->load->view('admin/partials/navbar', $profil); ?>
         <!-- Header -->
         <div class="header bg-primary pb-6">
             <div class="container-fluid">
@@ -34,19 +34,21 @@
                         <div class="card-header bg-transparent">
                             <div class="row align-items-center">
                                 <div class="col">
-                                    <form>
+                                    <form method="post" action="<?= site_url('admin/akun/tambah') ?>" enctype="multipart/form-data">
                                         <div class="row">
                                             <div class="col-sm-6">
                                                 <div class="form-group">
                                                     <label for="example-text-input" class="form-control-label">Nama</label>
-                                                    <input class="form-control" type="text" placeholder="Masukkan nama lengkap ..." id="example-text-input">
+                                                    <input name="nama" id="nama" class="form-control" type="text" placeholder="Masukkan nama lengkap ..." id="example-text-input">
+                                                    <?= form_error('nama', '<small style="padding-left: 0; margin-left: 0;" class="text-danger pl-2">', '</small>'); ?>
                                                 </div>
                                             </div>
                                             <div class="col-sm-6">
                                                 <div class="form-group">
                                                     <label for="example-search-input" class="form-control-label">No
                                                         Telepon</label>
-                                                    <input class="form-control" type="search" placeholder="Masukkan no telepon ..." id="example-search-input">
+                                                    <input name="nohp" id="nohp" class="form-control" type="search" placeholder="Masukkan no telepon ..." id="example-search-input">
+                                                    <?= form_error('nohp', '<small style="padding-left: 0; margin-left: 0;" class="text-danger pl-2">', '</small>'); ?>
                                                 </div>
                                             </div>
                                         </div>
@@ -54,7 +56,8 @@
                                             <div class="col-sm-6">
                                                 <div class="form-group">
                                                     <label for="example-email-input" class="form-control-label">Email</label>
-                                                    <input class="form-control" type="email" placeholder="Masukkan email ..." id="example-email-input">
+                                                    <input name="email" id="email" class="form-control" type="email" placeholder="Masukkan email ..." id="example-email-input">
+                                                    <?= form_error('email', '<small style="padding-left: 0; margin-left: 0;" class="text-danger pl-2">', '</small>'); ?>
                                                 </div>
                                             </div>
                                             <div class="col-sm-6">
@@ -63,6 +66,7 @@
                                                     <input name="foto" id="foto" accept="image/*" onchange="tampilkanPreview(this, 'preview')" class="form-control" type="file" placeholder="Upload foto" id="example-password-input">
                                                     <h6 class="text-danger">*Harap upload file berekstensi gambar
                                                     </h6>
+                                                    <?= form_error('foto', '<small style="padding-left: 0; margin-left: 0;" class="text-danger pl-2">', '</small>'); ?>
                                                 </div>
                                             </div>
                                         </div>
@@ -80,19 +84,22 @@
                                         </div>
                                         <div class="form-group">
                                             <label for="example-email-input" class="form-control-label">Alamat</label>
-                                            <textarea class="form-control" placeholder="Masukkan alamat lengkap ..." id="example-email-input"></textarea>
+                                            <textarea name="alamat" id="alamat" class="form-control" placeholder="Masukkan alamat lengkap ..." id="example-email-input"></textarea>
+                                            <?= form_error('alamat', '<small style="padding-left: 0; margin-left: 0;" class="text-danger pl-2">', '</small>'); ?>
                                         </div>
                                         <div class="row">
                                             <div class="col-sm-6">
                                                 <div class="form-group">
                                                     <label for="example-password-input" class="form-control-label">Password</label>
-                                                    <input class="form-control" type="password" placeholder="Masukkan password ..." id="example-password-input">
+                                                    <input name="password1" id="password1" class="form-control" type="password" placeholder="Masukkan password ..." id="example-password-input">
+                                                    <?= form_error('password1', '<small style="padding-left: 0; margin-left: 0;" class="text-danger pl-2">', '</small>'); ?>
                                                 </div>
                                             </div>
                                             <div class="col-sm-6">
                                                 <div class="form-group">
                                                     <label for="example-password-input" class="form-control-label">Konfirmasi Password</label>
-                                                    <input class="form-control" type="password" placeholder="Masukkan password kembali ..." id="example-password-input">
+                                                    <input name="password2" id="password2" class="form-control" type="password" placeholder="Masukkan password kembali ..." id="example-password-input">
+                                                    <?= form_error('password2', '<small style="padding-left: 0; margin-left: 0;" class="text-danger pl-2">', '</small>'); ?>
                                                 </div>
                                             </div>
                                         </div>
@@ -101,7 +108,7 @@
                                                 <span class="btn-inner--icon"><i class="ni ni-bold-left"></i></span>
                                                 <span class="btn-inner--text">Kembali</span>
                                             </a>
-                                            <button href="akun" class="btn btn-icon btn-success" type="submit">
+                                            <button href="<?= base_url("admin/akun") ?>" class="btn btn-icon btn-success" type="submit">
                                                 <span class="btn-inner--icon"><i class="ni ni-cloud-upload-96"></i></span>
                                                 <span class="btn-inner--text">Tambah Akun</span>
                                             </button>

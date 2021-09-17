@@ -6,7 +6,7 @@
     <!-- Main content -->
     <div class="main-content" id="panel">
         <!-- Topnav -->
-        <?php $this->load->view('admin/partials/navbar'); ?>
+        <?php $this->load->view('admin/partials/navbar', $profil); ?>
         <!-- Header -->
         <div class="header bg-primary pb-6">
             <div class="container-fluid">
@@ -42,12 +42,14 @@
                             </a>
                             <div class="row align-items-center">
                                 <div class="col">
+                                    <?php foreach ($admin as $detail) : ?>
+                                    <img src="<?= base_url('./uploads/admin/foto/') . $detail->foto ?>" alt="Foto Profil" class="logo mx-auto d-block mb-5 rounded-circle" width="200px">
                                     <div class="row">
                                         <div class="my-auto col-sm-2">
                                             <p>Nama Lengkap:</p>
                                         </div>
                                         <div class="my-auto col-sm-9">
-                                            <p>Andrea Santana</p>
+                                            <p><?= $detail->nama ?></p>
                                         </div>
                                     </div>
 
@@ -56,7 +58,7 @@
                                             <p>Email:</p>
                                         </div>
                                         <div class="my-auto col-sm-9">
-                                            <p>andreasterben@gmail.com</p>
+                                            <p><?= $detail->email ?></p>
                                         </div>
                                     </div>
 
@@ -65,7 +67,13 @@
                                             <p>Status:</p>
                                         </div>
                                         <div class="my-auto col-sm-9">
-                                            <p><span class="badge badge-success">Aktif</span></p>
+                                            <p><?php
+                                                if ($detail->status == 1) {
+                                                    echo '<span class="badge badge-success">Aktif</span>';
+                                                } elseif ($detail->status == 2) {
+                                                    echo '<span class="badge badge-danger">Non-Aktif</span>';
+                                                }
+                                                ?> </p>
                                         </div>
                                     </div>
 
@@ -74,7 +82,7 @@
                                             <p>Telepon/Whatsapp:</p>
                                         </div>
                                         <div class="my-auto col-sm-9">
-                                            <p>089513756156</p>
+                                            <p><?= $detail->no_hp ?></p>
                                         </div>
                                     </div>
 
@@ -83,13 +91,14 @@
                                             <p>Alamat:</p>
                                         </div>
                                         <div class="my-auto col-sm-9">
-                                            <p>Jl. Mastrip 2 Gg 2 No. 29 Sumbersari Jember</p>
+                                            <p><?= $detail->alamat ?></p>
                                         </div>
                                     </div>
                                     <a href="<?= base_url("admin/akun") ?>" class="btn btn-icon btn-danger" type="submit" style="margin-bottom: 0px">
                                         <span class="btn-inner--icon"><i class="ni ni-bold-left"></i></span>
                                         <span class="btn-inner--text">Kembali</span>
                                     </a>
+                                    <?php endforeach;?>
                                 </div>
                             </div>
                         </div>

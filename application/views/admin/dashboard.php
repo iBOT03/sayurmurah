@@ -4,7 +4,7 @@
     <!-- Main content -->
     <?php $this->load->view('admin/partials/sidebar'); ?>
     <div class="main-content" id="panel">
-        <?php $this->load->view('admin/partials/navbar'); ?>
+        <?php $this->load->view('admin/partials/navbar', $profil); ?>
         <!-- Header -->
         <div class="header bg-primary pb-6">
             <div class="container-fluid">
@@ -17,6 +17,7 @@
                                     <li class="breadcrumb-item active" aria-current="page">Dashboard</li>
                                 </ol>
                             </nav>
+                            <?= $this->session->flashdata('pesan'); ?>
                         </div>
                     </div>
                     <!-- Card stats -->

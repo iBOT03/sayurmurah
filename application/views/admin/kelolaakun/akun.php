@@ -118,32 +118,42 @@
                                                     </tr>
                                                 </thead>
                                                 <tbody class="list">
+                                                    <?php $no= 1;
+                                                    foreach ($admin as $row){ ?>
                                                     <tr>
                                                         <td>
-                                                            1
+                                                            <?= $no; ?>
                                                         </td>
                                                         <td>
-                                                            Andrea Santana
+                                                            <?= $row->nama; ?>
                                                         </td>
                                                         <td>
-                                                            andreasterben69@gmail.com
+                                                        <?= $row->email; ?>
                                                         </td>
                                                         <td>
                                                             <a href="#" class="avatar rounded-circle mr-3">
-                                                                <img alt="Image placeholder" src="{{ asset('style/assets/img/theme/angular.jpg') }}">
+                                                                <img alt="Image placeholder" src="<?= base_url('./uploads/admin/foto/') . $row->foto ?>">
                                                             </a>
                                                         </td>
                                                         <td>
-                                                            <span class="badge badge-success">Aktif</span>
+                                                            <?php 
+                                                            if ($row->status == 1) {
+                                                                echo '<span class="badge badge-success">Aktif</span>';
+                                                            } elseif ($row->status == 2) {
+                                                                echo '<span class="badge badge-danger">Non-Aktif</span>';
+                                                            }
+                                                            ?>                                                            
                                                         </td>
                                                         <td>
-                                                            <a href="<?= base_url("admin/akun/detail"); ?>" class="btn btn-icon btn-warning" type="button">
+                                                            <a href="<?= site_url("admin/akun/detail/" . $row->id_admin); ?>" class="btn btn-icon btn-warning" type="button">
                                                                 <span class="btn-inner--icon text-light"><i class="ni ni-zoom-split-in"></i></span>
                                                                 <span class="btn-inner--text text-light">Detail</span>
                                                             </a>
                                                         </td>
                                                     </tr>
-                                                    <tr>
+                                                    <?php $no++;
+                                                 } ?>
+                                                    <!-- <tr>
                                                         <td>
                                                             2
                                                         </td>
@@ -217,7 +227,7 @@
                                                                 <span class="btn-inner--text text-light">Detail</span>
                                                             </a>
                                                         </td>
-                                                    </tr>
+                                                    </tr> -->
                                                 </tbody>
                                             </table>
                                             <nav aria-label="...">

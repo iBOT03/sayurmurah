@@ -6,7 +6,8 @@ class Dashboard extends CI_Controller
 
     public function index()
     {
-        $this->load->view('admin/dashboard');
+        $data['profil'] = $this->db->get_where('admin', ['email' => $this->session->userdata('email')])->row_array();
+        $this->load->view('admin/dashboard', $data);
         // echo "ini dashboard";
     }
 }
