@@ -40,7 +40,7 @@
                             <div class="row align-items-center">
                                 <div class="col">
                                     <div class="table-responsive">
-                                        <div>
+                                        <div style="overflow-y: auto;">
                                             <table class="table align-items-center">
                                                 <thead class="thead-light">
                                                     <tr>
@@ -63,30 +63,51 @@
                                                                 <?= $row->nama_pasar; ?>
                                                             </td>
                                                             <td>
-                                                                <?= $daerah[0]->nama_daerah; ?>
+                                                                <?= $data[0]->nama_daerah; ?>
                                                             </td>
                                                             <td>
                                                                 <?= $row->alamat_pasar; ?>
                                                             </td>
                                                             <td>
                                                                 <a href="#" class="avatar rounded-circle mr-3">
-                                                                    <img alt="Image" src="<?= base_url('./uploads/admin/foto/') . $row->foto_pasar ?>">
+                                                                    <img alt="Image" src="<?= base_url('./uploads/admin/pasar/') . $row->foto_pasar ?>">
                                                                 </a>
                                                             </td>
                                                             <td>
-                                                                <a href="<?= site_url("admin/pasar/detail/" . $row->id_pasar); ?>" class="btn btn-icon btn-warning" type="button" style="margin-bottom: 0;">
+                                                                <a href="<?= site_url("admin/pasar/edit/" . $row->id_pasar); ?>" class="btn btn-icon btn-warning" type="button" style="margin-bottom: 0;">
                                                                     <span class="btn-inner--icon text-light"><i class="ni ni-ruler-pencil"></i></span>
                                                                     <span class="btn-inner--text text-light">Edit</span>
                                                                 </a>
-                                                                <a href="<?= site_url("admin/pasar/detail/" . $row->id_pasar); ?>" class="btn btn-icon btn-danger" type="button">
+                                                                <a href="<?= site_url("admin/pasar/hapus/" . $row->id_pasar) ?>" onclick="confirm_modal(''<?= 'pasar/hapus/' . $row->id_pasar; ?>)" class="btn btn-icon btn-danger" type="button">
                                                                     <span class="btn-inner--icon text-light"><i class="ni ni-fat-remove"></i></span>
                                                                     <span class="btn-inner--text text-light">Delete</span>
                                                                 </a>
                                                             </td>
                                                         </tr>
-                                                    <?php $no++; endforeach; ?>
+                                                    <?php $no++;
+                                                    endforeach; ?>
                                                 </tbody>
                                             </table>
+                                            <!-- Delete Modal -->
+                                            <div class="modal fade" id="deletetModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                <div class="modal-dialog modal-dialog-centered" role="document">
+                                                    <div class="modal-content">
+                                                        <div class="modal-header">
+                                                            <h5 class="modal-title" id="exampleModalLabel">Apakah anda yakin ingin menghapus data?</h5>
+                                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                <span aria-hidden="true">&times;</span>
+                                                            </button>
+                                                        </div>
+                                                        <div class="modal-body">
+                                                            <p>Pilih tombol cancel untuk kembali, dan pilih tombol delete untuk menghapus.</p>
+                                                        </div>
+                                                        <div class="modal-footer">
+                                                            <button type="button" class="btn btn-danger" data-dismiss="modal" style="margin-bottom: 0;">Cancel</button>
+                                                            <a href="<?= site_url('admin/Pasar/hapus/' . $row->id_pasar) ?>" type="button" class="btn btn-success">Delete</a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
                                             <nav aria-label="...">
                                                 <ul class="pagination justify-content-end">
                                                     <li class="page-item disabled">
