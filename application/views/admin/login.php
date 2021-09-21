@@ -7,6 +7,7 @@
     <title>Sayur Murah | Login</title>
     <link href="<?= base_url("asset/css/bootstrap/bootstrap.css"); ?>" rel="stylesheet">
     <link href="<?= base_url("asset/css/styles.css"); ?>" rel="stylesheet">
+    <link rel="icon" href="<?= base_url(); ?>asset/img/brand/ic-sm.png" type="image/png">
 </head>
 
 <body>
@@ -73,8 +74,8 @@
             }
         </script>
     </section>
-    <script type="application/javascript" src="{{ asset('style/assets/vendor/jquery/dist/jquery.min.js') }}"></script>
-    <script type="application/javascript" src="{{ asset('style/assets/vendor/bootstrap/dist/js/bootstrap.bundle.min.js') }}"></script>
+    <script type="application/javascript" src="<?= base_url("asset/vendor/jquery/dist/jquery.min.js") ?>"></script>
+    <script type="application/javascript" src="<?= base_url("asset/vendor/bootstrap/dist/js/bootstrap.bundle.min.js") ?>"></script>
 </body>
 
 </html>
